@@ -42,6 +42,8 @@
         Create new Chat
       </v-btn>
     </v-sheet>
+
+    <SearchBar />
   </v-sheet>
 </template>
 
@@ -53,7 +55,3 @@ export default class Chats extends Vue {
 
 }
 </script>
-
-<style>
-
-</style>

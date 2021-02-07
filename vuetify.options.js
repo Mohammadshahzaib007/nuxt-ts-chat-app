@@ -6,6 +6,7 @@ import Message from '~/components/icons/Message.vue';
 import Person from '~/components/icons/Person.vue';
 import Settings from '~/components/icons/Settings.vue';
 import Power from '~/components/icons/Power.vue';
+import Search from '~/components/icons/Search.vue';
 
 export default {
   theme: {
@@ -43,6 +44,9 @@ export default {
       },
       power: {
         component: Power
+      },
+      search: {
+        component: Search
       }
     }
   }
