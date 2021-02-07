@@ -1,4 +1,6 @@
-<template />
+<template>
+  <Dashboard />
+</template>
 
 <script>
 import { Component, Vue } from 'nuxt-property-decorator';
