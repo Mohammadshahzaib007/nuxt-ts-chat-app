@@ -7,7 +7,7 @@
   >
     <v-sheet
       color="transparent"
-      class="d-flex justify-space-between"
+      class="d-flex justify-space-between pr-4"
     >
       <div>
         <h1
@@ -28,15 +28,15 @@
         </p>
       </div>
       <v-btn
-        width="15rem"
-        height="3.75rem"
-        class="px-0 py-0 text-capitalize"
-        style="font-size: 1.25rem; line-height: 24px; background: linear-gradient(92.68deg, #7CB8F7 0%, #2A8BF2 100%);
+        width="240px"
+        height="60px"
+        class="px-6 text-capitalize font-weight-bold"
+        style="font-size: 20px; line-height: 24px; background: linear-gradient(92.68deg, #7CB8F7 0%, #2A8BF2 100%);
                 box-shadow: 6px 6px 25px rgba(42, 139, 242, 0.15), 4px 4px 25px rgba(42, 139, 242, 0.05), 10px 6px 25px rgba(42, 139, 242, 0.15);
-                border-radius: 6px; color: #ffffff"
+                border-radius: 6px; color: #ffffff;"
       >
         <v-icon
-          style="margin-right: 0.4375rem"
+          style="margin-right: 7px"
           color="#ffffff"
         >
           mdi-plus
@@ -50,7 +50,7 @@
       id="card-container"
       color="transparent"
       max-height="50.625rem"
-      class="mt-5"
+      class="mt-5 pr-2"
     >
       <ChatCard
         current-communication-status="write"

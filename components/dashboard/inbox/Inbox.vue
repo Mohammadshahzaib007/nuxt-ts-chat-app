@@ -1,5 +1,12 @@
 <template>
-  <h1>I am Inbox container</h1>
+  <v-card
+    elevation="0"
+    class="mr-15"
+    width="53.125rem"
+    height="58.125rem"
+  >
+    h
+  </v-card>
 </template>
 
 <script lang="ts">

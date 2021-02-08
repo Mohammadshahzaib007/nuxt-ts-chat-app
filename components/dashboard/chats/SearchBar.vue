@@ -2,8 +2,8 @@
   <v-sheet
     color="white"
     height="4.375rem"
-    class="d-flex search-bar"
-    style="border-radius: 6px; overflow: hidden"
+    class="d-flex search-bar mr-4"
+    style="border-radius: 6px; overflow: hidden;"
   >
     <v-text-field
       class="inputField"
