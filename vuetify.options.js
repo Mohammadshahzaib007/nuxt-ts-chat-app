@@ -18,6 +18,7 @@ import Film from '~/components/icons/Film.vue';
 import Navigation from '~/components/icons/Navigation.vue';
 import Smile from '~/components/icons/Smile.vue';
 import MoreHorizontal from '~/components/icons/MoreHorizontal.vue';
+import AllDone from '~/components/icons/AllDone.vue';
 
 export default {
   theme: {
@@ -91,6 +92,9 @@ export default {
       },
       moreHorizontal: {
         component: MoreHorizontal
+      },
+      allDone: {
+        component: AllDone
       }
     }
   }
