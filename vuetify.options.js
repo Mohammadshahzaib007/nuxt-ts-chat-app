@@ -17,6 +17,7 @@ import File from '~/components/icons/File.vue';
 import Film from '~/components/icons/Film.vue';
 import Navigation from '~/components/icons/Navigation.vue';
 import Smile from '~/components/icons/Smile.vue';
+import MoreHorizontal from '~/components/icons/MoreHorizontal.vue';
 
 export default {
   theme: {
@@ -87,6 +88,9 @@ export default {
       },
       smile: {
         component: Smile
+      },
+      moreHorizontal: {
+        component: MoreHorizontal
       }
     }
   }
