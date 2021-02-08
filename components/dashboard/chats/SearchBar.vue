@@ -2,7 +2,7 @@
   <v-sheet
     color="white"
     height="4.375rem"
-    class="d-flex search-bar mr-4"
+    class="d-flex search-bar mr-4 pl-8"
     style="border-radius: 6px; overflow: hidden;"
   >
     <v-text-field

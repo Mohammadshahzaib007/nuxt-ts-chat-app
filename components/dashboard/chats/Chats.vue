@@ -58,6 +58,7 @@
         user-name="Luy Robin"
         number-of-message="2"
         time-of-send-message="1 minute ago"
+        :is-online="true"
         message="Most of its text is made up from sections 1.10.32–3 of Cicero's De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes)."
       />
       <ChatCard
@@ -66,6 +67,7 @@
         :has-photo-recived="true"
         :has-file-recived="true"
         number-of-message="1"
+        :is-online="true"
         time-of-send-message="1 minute ago"
       />
       <ChatCard

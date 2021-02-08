@@ -10,6 +10,13 @@ import Search from '~/components/icons/Search.vue';
 import Mic from '~/components/icons/Mic.vue';
 import FileText from '~/components/icons/FileText.vue';
 import Image from '~/components/icons/Image.vue';
+import Attach from '~/components/icons/Attach.vue';
+import MoreVertical from '~/components/icons/MoreVertical.vue';
+import Plus from '~/components/icons/Plus.vue';
+import File from '~/components/icons/File.vue';
+import Film from '~/components/icons/Film.vue';
+import Navigation from '~/components/icons/Navigation.vue';
+import Smile from '~/components/icons/Smile.vue';
 
 export default {
   theme: {
@@ -59,6 +66,27 @@ export default {
       },
       image: {
         component: Image
+      },
+      attach: {
+        component: Attach
+      },
+      moreVertical: {
+        component: MoreVertical
+      },
+      plus: {
+        component: Plus
+      },
+      file: {
+        component: File
+      },
+      film: {
+        component: Film
+      },
+      navigation: {
+        component: Navigation
+      },
+      smile: {
+        component: Smile
       }
     }
   }

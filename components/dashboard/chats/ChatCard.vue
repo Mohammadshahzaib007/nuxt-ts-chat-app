@@ -24,6 +24,7 @@
             alt="John"
           >
           <v-badge
+            v-if="isOnline"
             bordered
             bottom
             color="#00C305"
@@ -183,7 +184,11 @@ numberOfMessage!: string
 
 @Prop()
 timeOfSendMessage!: string
+
+@Prop()
+isOnline!: boolean
 }
+
 </script>
 
 <style>
