@@ -7,6 +7,7 @@
   >
     <v-text-field
       height="4.375rem"
+      hide-details=""
 
       style="max-width: 24.9375rem; box-shadow: none; border-right: 2px solid #F5F4FB"
       solo
@@ -14,9 +15,10 @@
       prepend-inner-icon="$search"
     />
     <v-select
-
+      hide-details=""
       label="Messages"
       :items="['WhatsApp', 'Facebook']"
+      class="select"
       height="4.375rem"
       style="box-shadow: none; max-width: 141px; border: none; margin-left: 1rem;"
       dense
@@ -35,8 +37,10 @@ export default class SearchBar extends Vue {
 }
 </script>
 
-<style>
-.v-text-field.v-text-field--solo:not(.v-text-field--solo-flat) > .v-input__control > .v-input__slot {
-  box-shadow: none;
+<style lang="scss" scoped>
+.select ::v-deep .v-input__slot{
+  box-shadow: none !important;
+  border: none;
+  outline: none;
 }
 </style>

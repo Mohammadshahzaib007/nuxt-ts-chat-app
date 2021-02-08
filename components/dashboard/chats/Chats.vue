@@ -2,6 +2,8 @@
   <v-sheet
     color="transparent"
     width="37.3125rem"
+    max-height="60.6875rem"
+    style="overflow: hidden"
   >
     <v-sheet
       color="transparent"
@@ -44,6 +46,36 @@
     </v-sheet>
 
     <SearchBar />
+    <v-sheet
+      id="card-container"
+      color="transparent"
+      height="100%"
+    >
+      <ChatCard
+        current-communication-status="write"
+        type-of-sent-data="text"
+        user-name="Luy Robin"
+        number-of-message="2"
+        message="Most of its text is made up from sections 1.10.32–3 of Cicero's De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes)."
+      />
+      <ChatCard
+        current-communication-status="record"
+        user-name="Jared Sunn"
+        :has-photo-recived="true"
+        :has-file-recived="true"
+        number-of-message="1"
+      />
+      <ChatCard
+        type-of-sent-data="text"
+        user-name="Luy Robin"
+        message="Cicero famously orated against his political opponent Lucius Sergius Catilina."
+      />
+      <ChatCard
+        type-of-sent-data="text"
+        user-name="Luy Robin"
+        message="Cicero famously orated against his political opponent Lucius Sergius Catilina."
+      />
+    </v-sheet>
   </v-sheet>
 </template>
 
@@ -55,3 +87,19 @@ export default class Chats extends Vue {
 
 }
 </script>
+
+<style lang="scss" scoped>
+#card-container {
+  overflow: auto;
+  &::-webkit-scrollbar{
+    width: 6px;
+    height: 77px !important;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: #B7BDCB;
+  }
+}
+</style>

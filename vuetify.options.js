@@ -7,6 +7,9 @@ import Person from '~/components/icons/Person.vue';
 import Settings from '~/components/icons/Settings.vue';
 import Power from '~/components/icons/Power.vue';
 import Search from '~/components/icons/Search.vue';
+import Mic from '~/components/icons/Mic.vue';
+import FileText from '~/components/icons/FileText.vue';
+import Image from '~/components/icons/Image.vue';
 
 export default {
   theme: {
@@ -47,6 +50,15 @@ export default {
       },
       search: {
         component: Search
+      },
+      mic: {
+        component: Mic
+      },
+      fileText: {
+        component: FileText
+      },
+      image: {
+        component: Image
       }
     }
   }
