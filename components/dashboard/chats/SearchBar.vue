@@ -6,6 +6,7 @@
     style="border-radius: 6px; overflow: hidden"
   >
     <v-text-field
+      class="inputField"
       height="4.375rem"
       hide-details=""
 
@@ -42,5 +43,8 @@ export default class SearchBar extends Vue {
   box-shadow: none !important;
   border: none;
   outline: none;
+}
+.inputField ::v-deep .v-input__slot  {
+  box-shadow: none !important;
 }
 </style>

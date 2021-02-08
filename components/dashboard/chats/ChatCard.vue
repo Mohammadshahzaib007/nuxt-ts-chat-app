@@ -1,10 +1,9 @@
 <template>
   <!-- height="fit-content" -->
   <v-card
-    class="mx-auto px-7 py-10 mt-5"
+    class="mx-auto px-7 py-10 mb-5"
     style="border-radius: 6px;"
-    max-width="36.25rem"
-    min-height="13.75rem"
+    min-height="12.5rem"
     elevation="0"
   >
     <v-sheet
@@ -76,7 +75,8 @@
       <p
         style="font-size: 1rem; line-height: 19px; text-transform: lowercase; color: #707C97;"
       >
-        1 minute ago
+        <!-- 1 minute ago -->
+        {{ timeOfSendMessage }}
       </p>
     </v-sheet>
     <v-sheet
@@ -173,13 +173,16 @@ hasFileRecived!: boolean
 typeOfSentData!: string
 
 @Prop()
-userName: string
+userName!: string
 
 @Prop()
-message: string
+message!: string
 
 @Prop()
-numberOfMessage: string
+numberOfMessage!: string
+
+@Prop()
+timeOfSendMessage!: string
 }
 </script>
 
