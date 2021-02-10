@@ -40,6 +40,10 @@
       last-msg-time="3 days ago"
       is-there-a-file="(52.05 Mb) New_Style.zip"
     />
+    <MessageSenderBox
+      msg="This has been coded by Shahzaib"
+      last-msg-time="3 days ago"
+    />
   </v-sheet>
 </template>
 
