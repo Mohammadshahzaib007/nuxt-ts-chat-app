@@ -1,8 +1,11 @@
 <template>
-  <v-sheet color="transparent">
+  <v-sheet
+    color="transparent"
+    class="mb-4 mt-7"
+  >
     <v-sheet
       color="transparent"
-      class="d-flex  mb-4 mt-7 justify-end"
+      class="d-flex   justify-end"
     >
       <v-icon
         class="align-self-center"
@@ -12,12 +15,21 @@
         $moreHorizontal
       </v-icon>
       <div
-        class="d-flex align-center justify-center pt-3 pr-5 pl-7"
-        style="max-width: 520px; min-height: 3.125rem;background: #FFFFFF; border-radius: 10px 10px 0px 10px;
+        class="d-flex align-center flex-column justify-center pt-3 pr-5 pl-7"
+        style="max-width: 416px; min-height: 3.125rem;background: #FFFFFF; border-radius: 10px 10px 0px 10px;
         border: 1px solid rgba(112, 124, 151, 0.25); box-sizing: border-box; box-shadow: 10px 10px 25px rgba(112, 124, 151, 0.05), 15px 15px 35px rgba(112, 124, 151, 0.05);"
       >
         <p style="font-size: 1rem; color: #707C97; line-height: 26px;">
           {{ msg }}
+        </p>
+        <p
+          v-if="isThereAFile"
+          class="mx-0 my-0 mb-4 align-self-end"
+          style="font-size: 16px; line-height: 26px; color: #2A8BF2;"
+        >
+          {{ isThereAFile }} <v-icon color="#2A8BF2">
+            $file
+          </v-icon>
         </p>
       </div>
       <v-icon
@@ -28,7 +40,13 @@
         $allDone
       </v-icon>
     </v-sheet>
-    <p>hello</p>
+    <p
+      v-if="lastMsgTime"
+      class="text-right mr-16 mt-1"
+      style="font-size: 0.875rem; color: rgba(112, 124, 151, 0.7);"
+    >
+      {{ lastMsgTime }}
+    </p>
   </v-sheet>
 </template>
 
@@ -39,5 +57,11 @@ import { Component, Prop, Vue } from 'nuxt-property-decorator';
 export default class MessageSenderBox extends Vue {
     @Prop()
     msg!: string
+
+    @Prop()
+    lastMsgTime!: string;
+
+     @Prop()
+    isThereAFile!: string;
 }
 </script>
