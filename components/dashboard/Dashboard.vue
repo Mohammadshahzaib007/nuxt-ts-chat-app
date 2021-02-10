@@ -4,17 +4,17 @@
     style="height: 98vh"
   >
     <v-row
-      style=""
+      class="d-flex align-cent justify-center"
     >
       <v-col
-        cols="6"
+        cols="5"
         class="px-0 py-0 d-flex align-center flex-column"
       >
         <Chats />
       </v-col>
       <v-col
-        cols="6"
-        class="px-0 py-0 d-flex align-center flex-column"
+        cols="5"
+        class="px-0 py-0 ml-15 d-flex align-center flex-column"
       >
         <Inbox />
       </v-col>
