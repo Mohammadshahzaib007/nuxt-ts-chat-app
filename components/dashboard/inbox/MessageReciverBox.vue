@@ -1,19 +1,19 @@
 <template>
   <v-sheet
     width="fit-content"
-    class="mb-4 mt-7"
+    class="mb-4 mt-4"
   >
     <v-sheet
       color="transparent"
-      class="d-flex  "
+      class="d-flex "
     >
       <v-avatar
 
         :style="!isPhotoVisible && {'visibility': 'hidden'}"
-        width="54"
-        height="54"
+        width="36"
+        height="36"
         style="overflow: visible"
-        class="mr-6"
+        class="mr-4"
       >
         <img
           src="https://cdn.vuetifyjs.com/images/john.jpg"
@@ -36,7 +36,7 @@
         <v-sheet
           v-if="isFile"
           color="transparent"
-          class="d-flex"
+          class="d-flex align-center mb-4"
         >
           <v-icon
             color="#2A8BF2"
@@ -73,7 +73,7 @@
     </v-sheet>
     <p
       v-if="lastMsgTime"
-      class="mr-16 text-right mt-1"
+      class="mr-11 text-right mt-1"
       style="font-size: 0.875rem; color: rgba(112, 124, 151, 0.7);"
     >
       {{ lastMsgTime }}
