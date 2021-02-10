@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
-import { store } from './store';
+// import { store } from './store';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBU7R16TIp-tkh5Bih86j9oNZc6MdOrJl4',
@@ -13,12 +13,12 @@ const firebaseConfig = {
 };
   // Initialize Firebase
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-window.addEventListener('load', () => {
-  firebase.auth().onAuthStateChanged((user) => {
-  // store.dispatch('fetchUser', user);
-  store.dispatch('user/fetchUser', user);
-});
-} )
 
+// window.addEventListener('load', () => {
+//   firebase.auth().onAuthStateChanged((user) => {
+//   // store.dispatch('fetchUser', user);
+//     store.dispatch('user/fetchUser', user);
+//   });
+// });
 
 export default firebaseApp;

@@ -1,4 +1,5 @@
 import { defineModule } from 'direct-vuex';
+import { moduleActionContext } from '../store';
 
 const user = defineModule({
   state: () => ({
@@ -22,18 +23,21 @@ const user = defineModule({
     }
   },
   actions: {
-    fetchUser ({ commit }, user) {
-      commit('SET_LOGGED_IN', user !== null);
+    fetchUser (context, user) {
+      const { commit } = mod1ActionContext(context);
+      context.commit('SET_LOGGED_IN', user !== null);
       if (user) {
-        commit('SET_USER', {
+        context.commit('SET_USER', {
           displayName: user.displayName,
           email: user.email
         });
       } else {
-        commit('SET_USER', null);
+        context.commit('SET_USER', null);
       }
     }
   }
 });
 
 export default user;
+const mod1ActionContext = (context: any) => moduleActionContext(context, user)
+;
