@@ -80,6 +80,7 @@
             style="font-size: 1rem; color: #707C97; line-height: 19px;"
             class="mt-auto mb-10 text-uppercase px-0 py-0"
             width="fit-content"
+            @click="onSignOut"
           >
             <v-icon
               color="#707C97"
@@ -96,6 +97,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
+import firebaseApp from '../firebase.js';
 
 @Component
 export default class SideNav extends Vue {
@@ -111,7 +113,14 @@ export default class SideNav extends Vue {
       { title: 'Settings', icon: 'mdi-cog-outline' }
     ]
 
-    mounted () {
+    onSignOut () {
+      firebaseApp.auth()
+        .signOut()
+        .then(() => {
+          this.$router.replace(
+            '/loginPage'
+          );
+        });
     }
 }
 </script>

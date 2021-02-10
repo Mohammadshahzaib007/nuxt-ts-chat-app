@@ -13,7 +13,7 @@
         <Chats />
       </v-col>
       <v-col
-        cols="5"
+        cols="6"
         class="px-0 py-0 ml-15 d-flex align-center flex-column"
       >
         <Inbox />

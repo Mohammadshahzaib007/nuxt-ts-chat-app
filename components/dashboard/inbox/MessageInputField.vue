@@ -54,21 +54,32 @@
           <v-icon>$film</v-icon>
         </v-btn>
       </v-speed-dial>
+
       <v-text-field
+        v-model="enteredMsg"
         height="100%"
-        hide-details=""
+        hide-details
         append-icon="$smile"
         class="textFieldMsg "
         placeholder="Type a message here"
         solo
+        @keyup.enter="sendMsg"
       />
       <div
         class="d-flex align-center justify-center ml-8"
         style="width: 40px; height: 40px; border-radius: 100%; background: linear-gradient(325.78deg, #2A8BF2 14.76%, #7CB8F7 87.3%); box-shadow: 4px 4px 25px rgba(42, 139, 242, 0.15), 2px 2px 25px rgba(42, 139, 242, 0.05), 4px 6px 10px rgba(42, 139, 242, 0.15);"
       >
-        <v-icon color="white">
-          mdi-near-me
-        </v-icon>
+        <v-btn
+          fab
+          dark
+          small
+          color="primary"
+          @click="sendMsg"
+        >
+          <v-icon color="white">
+            mdi-near-me
+          </v-icon>
+        </v-btn>
       </div>
     </v-sheet>
   </v-sheet>
@@ -76,9 +87,23 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
+
+import firebaseApp from '../../../firebase.js';
+
 @Component
 export default class MessageInputField extends Vue {
+  enteredMsg = ''
 
+  sendMsg () {
+    if (this.enteredMsg === '') {
+      return;
+    }
+    // firebase database refrence
+    const msgRef = firebaseApp.database().ref('messages');
+    // pushing data to the server
+    msgRef.push({ content: this.enteredMsg });
+    this.enteredMsg = '';
+  }
 }
 </script>
 

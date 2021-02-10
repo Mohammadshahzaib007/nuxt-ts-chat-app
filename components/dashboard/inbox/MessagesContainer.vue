@@ -44,14 +44,39 @@
       msg="This has been coded by Shahzaib"
       last-msg-time="3 days ago"
     />
+    <MessageSenderBox
+      v-for="msg in messages"
+      :key="msg.id"
+      :msg="msg.content"
+      last-msg-time="3 days ago"
+    />
   </v-sheet>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
+import firebaseApp from '../../../firebase.js';
 
 @Component
 export default class MessagesContainer extends Vue {
+messages: Array<{
+      id: string,
+      content: string
+    }> = [];
 
+// fetching msges from firebase
+fetchMsg () {
+  const msgRef = firebaseApp.database().ref('messages');
+  msgRef.on('value', (snapshot) => {
+    const data = snapshot.val();
+    Object.keys(data).map((key) => {
+      this.messages.push({ id: key, content: data[key].content });
+    });
+  });
+}
+
+mounted () {
+  this.fetchMsg();
+}
 }
 </script>

@@ -45,6 +45,7 @@
       </v-btn>
     </v-sheet>
 
+    <!-- SEARCH BAR COMPONENT -->
     <SearchBar />
     <v-sheet
       id="card-container"
