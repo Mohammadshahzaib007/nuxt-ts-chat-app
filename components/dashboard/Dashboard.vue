@@ -1,6 +1,11 @@
 <template>
-  <v-container class="px-0 py-0">
-    <v-row style="margin-top: 6.8125rem">
+  <v-container
+    class="px-0 d-flex align-center justify-center"
+    style="height: 98vh"
+  >
+    <v-row
+      style=""
+    >
       <v-col
         cols="6"
         class="px-0 py-0 d-flex align-center flex-column"

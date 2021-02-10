@@ -12,7 +12,7 @@
         color="#B7BDCB"
         style="margin-right: 14px"
       >
-        $moreHorizontal
+        mdi-dots-horizontal
       </v-icon>
       <div
         class="d-flex align-center flex-column justify-center pt-3 pr-5 pl-7"
@@ -37,7 +37,7 @@
         color="#B7BDCB"
         style="margin-left: 13px"
       >
-        $allDone
+        mdi-check-all
       </v-icon>
     </v-sheet>
     <p

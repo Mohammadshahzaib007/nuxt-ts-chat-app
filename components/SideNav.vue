@@ -60,7 +60,7 @@
             >
               <v-list-item-icon class="px-0 py-0 mr-4">
                 <v-icon color="#707C97">
-                  ${{ item.icon }}
+                  {{ item.icon }}
                 </v-icon>
               </v-list-item-icon>
 
@@ -85,7 +85,7 @@
               color="#707C97"
               class="mr-4"
             >
-              $power
+              mdi-power
             </v-icon>   Log out
           </v-btn>
         </v-col>
@@ -103,12 +103,12 @@ export default class SideNav extends Vue {
         title: string;
         icon: string;
     }> = [
-      { title: 'Home', icon: 'grid' },
-      { title: 'Chat', icon: 'message' },
-      { title: 'Contact', icon: 'person' },
-      { title: 'Notifications', icon: 'bell' },
-      { title: 'Calendar', icon: 'calendar' },
-      { title: 'Settings', icon: 'settings' }
+      { title: 'Home', icon: 'mdi-view-grid-outline' },
+      { title: 'Chat', icon: 'mdi-chat-processing-outline' },
+      { title: 'Contact', icon: 'mdi-account-outline' },
+      { title: 'Notifications', icon: 'mdi-bell-outline' },
+      { title: 'Calendar', icon: 'mdi-calendar-week-begin' },
+      { title: 'Settings', icon: 'mdi-cog-outline' }
     ]
 
     mounted () {

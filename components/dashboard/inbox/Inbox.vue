@@ -84,13 +84,20 @@
           class="d-flex align-center justify-center mr-5"
           style="width: 52px;height: 52px; border-radius: 100%; background: #fff; box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.03), 0px 7px 25px rgba(42, 139, 242, 0.03), 0px 5px 25px rgba(42, 139, 242, 0.07);"
         >
-          <v-icon>$attach</v-icon>
+          <v-icon
+            color="#707C97"
+            style="transform: rotate(-45deg)"
+          >
+            mdi-attachment
+          </v-icon>
         </div>
         <div
           class="d-flex align-center justify-center"
           style="width: 52px;height: 52px; border-radius: 100%; background: #fff; box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.03), 0px 7px 25px rgba(42, 139, 242, 0.03), 0px 5px 25px rgba(42, 139, 242, 0.07);"
         >
-          <v-icon>$moreVertical</v-icon>
+          <v-icon color="#707C97">
+            mdi-dots-vertical
+          </v-icon>
         </div>
       </v-sheet>
     </v-sheet>

@@ -44,7 +44,7 @@
             style="background: rgba(255, 255, 255, 0.25)"
             size="40"
           >
-            $file
+            mdi-file-document-outline
           </v-icon>
           <div>
             <p
@@ -68,7 +68,7 @@
         color="#B7BDCB"
         style="margin-left: 18px"
       >
-        $moreHorizontal
+        mdi-dots-horizontal
       </v-icon>
     </v-sheet>
     <p

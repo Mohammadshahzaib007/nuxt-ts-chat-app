@@ -89,14 +89,13 @@
         style="font-size: 16px; line-height: 26px; color: #707C97; max-width: 28.125rem"
       >
         {{ message }}
-        <!-- Most of its text is made up from sections 1.10.32–3 of Cicero's De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes). -->
       </p>
       <p
         v-else
         style="font-size: 16px; line-height: 26px; color: #707C97; max-width: 28.125rem"
       >
         <v-icon size="14">
-          $mic
+          mdi-microphone-outline
         </v-icon> Voice message (01:15)
       </p>
       <div
@@ -126,7 +125,7 @@
           style="margin-right: 0.3125rem"
         >
           <!-- mdi-file-document-outline -->
-          $fileText
+          mdi-file-document-outline
         </v-icon>
         Fiels(x2)
       </v-btn>
@@ -147,8 +146,7 @@
           color="#FF3366"
           style="margin-right: 0.3125rem"
         >
-          <!-- mdi-file-document-outline -->
-          $image
+          mdi-image-outline
         </v-icon>
         Photo
       </v-btn>

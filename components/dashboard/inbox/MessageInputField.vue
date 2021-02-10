@@ -25,7 +25,7 @@
               mdi-close
             </v-icon>
             <v-icon v-else>
-              $plus
+              mdi-plus
             </v-icon>
           </v-btn>
         </template>
@@ -35,7 +35,7 @@
           small
           color="#2A8BF2"
         >
-          <v-icon>$file</v-icon>
+          <v-icon>mdi-file-document-outline</v-icon>
         </v-btn>
         <v-btn
           fab
@@ -43,7 +43,7 @@
           small
           color="#2A8BF2"
         >
-          <v-icon>$image</v-icon>
+          <v-icon> mdi-image-outline</v-icon>
         </v-btn>
         <v-btn
           fab
@@ -67,7 +67,7 @@
         style="width: 40px; height: 40px; border-radius: 100%; background: linear-gradient(325.78deg, #2A8BF2 14.76%, #7CB8F7 87.3%); box-shadow: 4px 4px 25px rgba(42, 139, 242, 0.15), 2px 2px 25px rgba(42, 139, 242, 0.05), 4px 6px 10px rgba(42, 139, 242, 0.15);"
       >
         <v-icon color="white">
-          $navigation
+          mdi-near-me
         </v-icon>
       </div>
     </v-sheet>

@@ -2,7 +2,7 @@
   <v-sheet
     color="transparent"
     width="37.3125rem"
-    max-height="60.6875rem"
+    max-height="58.125rem"
     style="overflow: hidden"
   >
     <v-sheet
