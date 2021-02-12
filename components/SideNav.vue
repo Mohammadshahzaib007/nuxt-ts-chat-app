@@ -38,7 +38,9 @@
               style="font-size: 1.125rem; color: #0D1C2E; line-height: 21px; cursor: pointer"
               class="mt-4 align-slef-center"
             >
-              Henry Jabbawockiez <v-icon
+              {{ userName ? userName : 'Henry Jabbawockiez' }}
+              <!-- Henry Jabbawockiez -->
+              <v-icon
                 color="#0D1C2E"
               >
                 mdi-chevron-down
@@ -97,7 +99,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
-import firebaseApp from '../firebase.js';
+// import { store } from '@/store';
+import firebaseApp from '@/firebase.js';
 
 @Component
 export default class SideNav extends Vue {
@@ -122,5 +125,13 @@ export default class SideNav extends Vue {
           );
         });
     }
+
+  // get userName () {
+  //   return store.getters.displayName;
+  // }
+
+  // mounted () {
+  //   console.log('from side nav', this.userName);
+  // }
 }
 </script>

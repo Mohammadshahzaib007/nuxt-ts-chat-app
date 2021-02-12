@@ -25,7 +25,7 @@
             src="https://cdn.vuetifyjs.com/images/john.jpg"
             alt="John"
           >
-          <v-badge
+          <!-- <v-badge
             v-if="isOnline"
             bordered
             bottom
@@ -34,7 +34,7 @@
             style="border: 1.5px solid #FFFFFF;"
             offset-x="50"
             offset-y="24"
-          /></v-badge>
+          /></v-badge> -->
         </v-avatar>
         <div
           style="height: fit-content; color: transparent"
@@ -45,15 +45,15 @@
           >
             Shahzaib
           </h2>
-          <p
+          <!-- <p
             v-if="currentCommunicationStatus === 'write'"
             class="px-0 py-0"
             style="font-size: 16px; display: inline; line-height: 19px; color: #2A8BF2;"
           >
             ..writes
-          </p>
+          </p> -->
 
-          <p
+          <!-- <p
             v-else-if="currentCommunicationStatus === 'record'"
             class="px-0 py-0 d-flex align-center mt-1"
             style="font-size: 16px;  line-height: 19px; color: #2A8BF2;"
@@ -65,9 +65,9 @@
               <span style="width: 4px; height: 4px; border-radius: 100%; display: inline; background-color: #2A8BF2" />
             </span>
             records voice message
-          </p>
+          </p> -->
+          <!-- v-else -->
           <p
-            v-else
             class="px-0 py-0"
             style="font-size: 16px; display: inline; line-height: 19px; color: #2A8BF2;"
           >

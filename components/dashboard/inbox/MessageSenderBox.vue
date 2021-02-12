@@ -27,7 +27,7 @@
           class="mx-0 my-0 mb-4 align-self-end"
           style="font-size: 16px; line-height: 26px; color: #2A8BF2;"
         >
-          {{ isThereAFile }} <v-icon color="#2A8BF2">
+          {{ isThereAFile }} <v-icon color="#fff">
             $file
           </v-icon>
         </p>

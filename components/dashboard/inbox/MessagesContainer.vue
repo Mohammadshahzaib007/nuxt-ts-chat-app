@@ -44,18 +44,22 @@
       msg="This has been coded by Shahzaib"
       last-msg-time="3 days ago"
     />
-    <MessageSenderBox
+    <template
       v-for="msg in messages"
-      :key="msg.id"
-      :msg="msg.content"
-      last-msg-time="3 days ago"
-    />
+    >
+      <MessageSenderBox
+        :key="msg.id"
+        :msg="msg.content"
+        last-msg-time="3 days ago"
+      />
+    </template>
   </v-sheet>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 import firebaseApp from '../../../firebase.js';
+import { store } from '../../../store';
 
 @Component
 export default class MessagesContainer extends Vue {
