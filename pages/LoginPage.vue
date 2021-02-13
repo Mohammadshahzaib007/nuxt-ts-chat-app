@@ -10,7 +10,7 @@
         </h1>
         <v-form
           ref="form"
-          @submit.prevent="onLogin"
+          @submit.prevent="loginUser"
         >
           <v-text-field
             v-model="email"
@@ -37,7 +37,7 @@
             block
             color="primary"
             type="submit"
-            :loading="isLoading"
+            :loading="actionLoading"
           >
             Login
           </v-btn>
@@ -56,7 +56,6 @@
 <script lang="ts">
 import { Component, Ref, Vue } from 'nuxt-property-decorator';
 
-import firebaseApp from '@/firebase.js';
 import { store } from '~/store';
 
 @Component({
@@ -67,30 +66,25 @@ export default class Login extends Vue {
   email = ''
   password = ''
   isLoading = false
-  error = null
+  actionLoading = false;
+  error: null | string = null
 
-  onLogin () {
-    this.isLoading = true;
-    if (this.form.validate()) {
-      // firebaseApp.auth().signInWithEmailAndPassword(this.email, this.password)
-      //   .then((_data) => {
-      //     this.isLoading = false;
-      //     this.error = null;
+  async loginUser () {
+    if (!this.form.validate()) { return; }
 
-      //     this.$router.push('/');
-      //   })
-      //   .catch((error) => {
-      //     this.isLoading = false;
-      //     this.error = error.message;
-      //   });
-      // const payload = {name: this.name, password: this.password}
-      store.dispatch.onLogIn({ email: this.email, password: this.password }).then(() => {
-        this.$router.push('/');
-      }).catch((err) => {
-        this.error = err.message;
+    try {
+      this.actionLoading = true;
+
+      await store.dispatch.login({
+        email: this.email,
+        password: this.password
       });
+      this.$router.push('/');
+    } catch (err) {
+      this.error = err.message;
+    } finally {
+      this.actionLoading = false;
     }
-    this.isLoading = false;
   }
 }
 </script>

@@ -4,7 +4,7 @@ export interface UserState {
    user: {
     isloggedIn: boolean,
     data: object | null,
-    ActiveUserUid: string |undefined,
-    displayName: string
+    ActiveUserUid: string |null | undefined,
+    displayName: string | null
    }
 }

@@ -14,45 +14,34 @@ const user = defineModule({
 
   }),
   getters: {
-    user (state) {
+    user (state: UserState) {
       return state.user;
     },
-    displayName (state) {
+    displayName (state: UserState) {
       return state.user.displayName;
+    },
+    userUid (state: UserState) {
+      return state.user.ActiveUserUid;
     }
   },
   mutations: {
-    ON_LOG_IN (state, payload: {email: string, password: string}) {
-      // console.log(payload);
-      firebaseApp.auth().signInWithEmailAndPassword(payload.email, payload.email)
-        .then((data) => {
-          console.log(data);
-          state.user.userUid = data?.user?.uid;
-          // $nuxt.$router.push('/')
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    ON_SIGN_UP (state, payload: {name: string, email: string, password: string}) {
+    // ON_LOG_IN (state, payload: {email: string, password: string}) {
+
+    // },
+    ON_SIGN_UP (state: UserState, payload: {name: string}) {
       state.user.displayName = payload.name;
-      firebaseApp.auth().createUserWithEmailAndPassword(payload.email, payload.password)
-        .then((data) => {
-          data.user
-            .updateProfile({
-              displayName: payload.name
-            });
-          console.log('signup mutation', data);
-          state.user.userUid = data?.user?.uid;
-          // this.$router.push('/');
-        })
-        .catch(error => console.log(error.message));
     },
-    SET_LOGGED_IN (state, value) {
+    SET_LOGGED_IN (state: UserState, value) {
       state.user.isloggedIn = value;
     },
-    SET_USER (state, data) {
+    SET_USER (state: UserState, data) {
       state.user.data = data;
+    },
+    SET_USER_DISPLAY_NAME (state: UserState, payload: string | null) {
+      state.user.displayName = payload;
+    },
+    SET_USER_UID (state: UserState, payload: string |null | undefined) {
+      state.user.ActiveUserUid = payload;
     }
   },
   actions: {
@@ -74,15 +63,60 @@ const user = defineModule({
         // commit.SET_USER(payload:{name: string, email:string});
       }
     },
-    onLogIn (context, payload: {email: string, password: string}) {
-      console.log(context.state);
+    login (context, payload: {email: string, password: string}):Promise<void> {
       const { commit } = mod1ActionContext(context);
-      commit.ON_LOG_IN(payload);
+      // Modern
+      return new Promise((resolve, reject) => {
+        (async () => {
+          console.log(payload);
+          try {
+            const res = await firebaseApp.auth().signInWithEmailAndPassword(payload.email, payload.password);
+            commit.SET_USER_DISPLAY_NAME(res.user?.displayName);
+            commit.SET_USER_UID(res.user?.uid);
+
+            // throw new Error('error..');
+
+            resolve();
+          } catch (err) {
+            reject(err);
+          }
+        })();
+      });
     },
-    onSignUp (context, payload: {name: string, email: string, password: string}) {
-      console.log(context.state);
-      const { commit } = mod1ActionContext(context);
-      commit.ON_SIGN_UP(payload);
+
+    signup (context, payload: {name: string, email: string, password: string}): Promise<void> {
+      const { commit, state } = mod1ActionContext(context);
+      state.user.displayName = payload.name;
+      return new Promise<void>((resolve, reject) => {
+        (async () => {
+          try {
+            const res = await firebaseApp.auth().createUserWithEmailAndPassword(payload.email, payload.password);
+            res.user?.updateProfile({
+              displayName: payload.name
+            });
+            // commit.SET_USER_DISPLAY_NAME(res.user?.displayName);
+            commit.SET_USER_UID(res.user?.uid);
+
+            resolve();
+          } catch (err) {
+            reject(err);
+          }
+        })();
+      });
+    },
+
+    logout (): Promise<void> {
+      return new Promise<void>((resolve, reject) => {
+        // firebaseApp.auth().signOut().then(() => resolve()).catch(err => reject(err));
+        (async () => {
+          await firebaseApp.auth().signOut();
+          try {
+            resolve();
+          } catch (err) {
+            reject(err);
+          }
+        })();
+      });
     }
   }
 

@@ -87,7 +87,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
-
+import { store } from '@/store/';
 import firebaseApp from '../../../firebase.js';
 
 @Component
@@ -101,8 +101,17 @@ export default class MessageInputField extends Vue {
     // firebase database refrence
     const msgRef = firebaseApp.database().ref('messages');
     // pushing data to the server
-    msgRef.push({ content: this.enteredMsg });
+    const data = {
+      content: this.enteredMsg,
+      userUid: this.userUid,
+      msgSentTime: new Date().toDateString()
+    };
+    msgRef.push(data);
     this.enteredMsg = '';
+  }
+
+  get userUid () : string | null | undefined {
+    return store.getters.userUid;
   }
 }
 </script>

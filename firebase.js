@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
-// import { store } from './store';
+import { store } from './store';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBU7R16TIp-tkh5Bih86j9oNZc6MdOrJl4',
@@ -15,10 +15,13 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 // window.addEventListener('load', () => {
-//   firebase.auth().onAuthStateChanged((user) => {
-//   // store.dispatch('fetchUser', user);
-//     store.dispatch('user/fetchUser', user);
-//   });
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    console.log('form firbase file:  User ' + user.uid + ' is logged in with ' + user);
+  } else {
+    console.log('from firebase file: User is logged out');
+  }
+});
 // });
 
 export default firebaseApp;

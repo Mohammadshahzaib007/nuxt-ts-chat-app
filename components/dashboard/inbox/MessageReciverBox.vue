@@ -76,7 +76,11 @@
       class="mr-11 text-right mt-1"
       style="font-size: 0.875rem; color: rgba(112, 124, 151, 0.7);"
     >
-      {{ lastMsgTime }}
+      <!-- {{ lastMsgTime }} -->
+      <timeago
+        :datetime="lastMsgTime"
+        :auto-update="60"
+      />
     </p>
   </v-sheet>
 </template>

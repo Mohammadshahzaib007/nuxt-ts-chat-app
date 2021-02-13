@@ -99,8 +99,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
-// import { store } from '@/store';
-import firebaseApp from '@/firebase.js';
+import { store } from '@/store';
 
 @Component
 export default class SideNav extends Vue {
@@ -117,21 +116,22 @@ export default class SideNav extends Vue {
     ]
 
     onSignOut () {
-      firebaseApp.auth()
-        .signOut()
-        .then(() => {
-          this.$router.replace(
-            '/loginPage'
-          );
-        });
+      store.dispatch.logout().then(() => this.$router.replace('/loginpage'));
+      // firebaseApp.auth()
+      //   .signOut()
+      //   .then(() => {
+      //     this.$router.replace(
+      //       '/loginPage'
+      //     );
+      //   });
     }
 
-  // get userName () {
-  //   return store.getters.displayName;
-  // }
+    get userName () {
+      return store.getters.displayName;
+    }
 
-  // mounted () {
-  //   console.log('from side nav', this.userName);
-  // }
+    mounted () {
+      console.log('from side nav', this.userName);
+    }
 }
 </script>

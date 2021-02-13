@@ -31,10 +31,14 @@
             :rules="[val => (val || '').length > 0 || 'This field is required']"
             outlined
           />
+          <p style="color: red; font-size: 14px; margin: 15px 0">
+            {{ err }}
+          </p>
           <v-btn
             block
             color="primary"
             type="submit"
+            :loading="acctionLoading"
           >
             Signup
           </v-btn>
@@ -62,23 +66,23 @@ export default class Signup extends Vue {
   name = ''
   email = ''
   password = ''
+  acctionLoading = false
+  err: null | string = ''
 
-  onSignUp () {
-    if (this.form.validate()) {
-      // firebaseApp.auth().createUserWithEmailAndPassword(this.email, this.password)
-      //   .then((data) => {
-      //     data.user
-      //       .updateProfile({
-      //         displayName: this.name
-      //       });
-      //     console.log(data);
-      //     this.$router.push('/');
-      //   })
-      //   .catch(error => console.log(error.message));
-      store.dispatch.onSignUp({ name: this.name, email: this.email, password: this.password }).then(() => {
-        this.$router.push('/');
-      });
+  async onSignUp () {
+    if (!this.form.validate()) { return; }
+    try {
+      this.acctionLoading = true;
+      await store.dispatch.signup({ name: this.name, email: this.email, password: this.password });
+      this.$router.push('/');
+    } catch (err) {
+      this.err = err.message;
+    } finally {
+      this.acctionLoading = false;
     }
-  }
+    // store.dispatch.signup({ name: this.name, email: this.email, password: this.password }).then(() => {
+    //   this.$router.push('/');
+  };
 }
+
 </script>
