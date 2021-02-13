@@ -10,8 +10,9 @@ const user = defineModule({
       data: null,
       ActiveUserUid: '',
       displayName: ''
-    }
+    },
 
+    messages: []
   }),
   getters: {
     user (state: UserState) {
@@ -22,6 +23,9 @@ const user = defineModule({
     },
     userUid (state: UserState) {
       return state.user.ActiveUserUid;
+    },
+    messages (state: UserState) {
+      return state.messages;
     }
   },
   mutations: {
@@ -110,6 +114,73 @@ const user = defineModule({
         // firebaseApp.auth().signOut().then(() => resolve()).catch(err => reject(err));
         (async () => {
           await firebaseApp.auth().signOut();
+          try {
+            resolve();
+          } catch (err) {
+            reject(err);
+          }
+        })();
+      });
+    },
+
+    // fetching msg from firebase
+    fetchMsg (context) {
+      const { state } = mod1ActionContext(context);
+      return new Promise((resolve, reject) => {
+        (async () => {
+        // firebase database refrence
+          const msgRef = firebaseApp.database().ref('messages');
+
+          msgRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+
+            console.log(data);
+            const messages:Array<{
+              id: string,
+              userUid: string |null | undefined,
+              content: string,
+              msgSentTime: Date
+            }> = [];
+            Object.keys(data).map((key) => {
+              messages.push({
+                id: key,
+                userUid: data[key].userUid,
+                content: data[key].content,
+                msgSentTime: data[key].msgSentTime
+              });
+            });
+
+            state.messages = messages;
+            // for testing
+            // for (const key in data) {
+            //   if (Object.prototype.hasOwnProperty.call(data, key)) {
+            //     state.messages.push({
+            //       id: key,
+            //       userUid: data[key].userUid,
+            //       content: data[key].content,
+            //       msgSentTime: data[key].msgSentTime
+            //     });
+            //     // const element = data[key];
+            //   }
+            // }
+          });
+        })();
+      });
+    },
+
+    // adding actions for chat
+    sendMsg (context, payload:string): Promise<void> {
+      const { state } = mod1ActionContext(context);
+
+      return new Promise<void>((resolve, reject) => {
+        (async () => {
+          // firebase database refrence
+          const msgRef = firebaseApp.database().ref('messages');
+          await msgRef.push({
+            content: payload,
+            userUid: state.user.ActiveUserUid,
+            msgSentTime: new Date().toDateString()
+          });
           try {
             resolve();
           } catch (err) {

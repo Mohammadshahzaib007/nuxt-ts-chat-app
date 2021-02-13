@@ -53,8 +53,9 @@
         :msg="msg.content"
         :last-msg-time="msg.msgSentTime"
       />
+      <!-- v-else-if="userUid !== msg.userUid" -->
       <MessageReciverBox
-        v-else-if="userUid !== msg.userUid"
+        v-else
         :key="msg.id"
         :msg="msg.content"
         :last-msg-time="msg.msgSentTime"
@@ -65,42 +66,22 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
-import firebaseApp from '../../../firebase.js';
 import { store } from '../../../store';
 
 @Component
 export default class MessagesContainer extends Vue {
-messages: Array<{
-      id: string,
-      userUid: string |null | undefined,
-      content: string,
-      msgSentTime: Date
-    }> = [];
+  get userUid () : string | null | undefined {
+    return store.getters.userUid;
+  }
 
-// fetching msges from firebase
-fetchMsg () {
-  const msgRef = firebaseApp.database().ref('messages');
-  msgRef.on('value', (snapshot) => {
-    const data = snapshot.val();
-    console.log(data);
-    Object.keys(data).forEach((key) => {
-      this.messages.push({
-        id: key,
-        userUid: data[key].userUid,
-        content: data[key].content,
-        msgSentTime: data[key].msgSentTime
-      });
-    });
-  });
-}
+  get messages () {
+    return store.getters.messages;
+  }
 
-get userUid () : string | null | undefined {
-  return store.getters.userUid;
-}
-
-mounted () {
-  this.fetchMsg();
-  console.log(this.messages);
-}
+  mounted () {
+  // this.fetchMsg();
+    // console.log(this.messages);
+    store.dispatch.fetchMsg();
+  }
 }
 </script>
