@@ -26,6 +26,9 @@ const user = defineModule({
     },
     messages (state: UserState) {
       return state.messages;
+    },
+    isUser (state: UserState) {
+      return state.user.data;
     }
   },
   mutations: {
@@ -75,8 +78,10 @@ const user = defineModule({
           console.log(payload);
           try {
             const res = await firebaseApp.auth().signInWithEmailAndPassword(payload.email, payload.password);
+            const user = firebaseApp.auth().currentUser;
             commit.SET_USER_DISPLAY_NAME(res.user?.displayName);
             commit.SET_USER_UID(res.user?.uid);
+            commit.SET_USER(user);
 
             // throw new Error('error..');
 
@@ -95,11 +100,13 @@ const user = defineModule({
         (async () => {
           try {
             const res = await firebaseApp.auth().createUserWithEmailAndPassword(payload.email, payload.password);
+            const user = firebaseApp.auth().currentUser;
             res.user?.updateProfile({
               displayName: payload.name
             });
             // commit.SET_USER_DISPLAY_NAME(res.user?.displayName);
             commit.SET_USER_UID(res.user?.uid);
+            commit.SET_USER(user);
 
             resolve();
           } catch (err) {
@@ -109,18 +116,25 @@ const user = defineModule({
       });
     },
 
-    logout (): Promise<void> {
+    logout (context): Promise<void> {
+      const { commit } = mod1ActionContext(context);
       return new Promise<void>((resolve, reject) => {
         // firebaseApp.auth().signOut().then(() => resolve()).catch(err => reject(err));
         (async () => {
           await firebaseApp.auth().signOut();
           try {
+            commit.SET_USER(null);
             resolve();
           } catch (err) {
             reject(err);
           }
         })();
       });
+    },
+
+    setuser (context, payload) {
+      const { commit } = mod1ActionContext(context);
+      commit.SET_USER(payload);
     },
 
     // fetching msg from firebase
@@ -151,18 +165,6 @@ const user = defineModule({
             });
 
             state.messages = messages;
-            // for testing
-            // for (const key in data) {
-            //   if (Object.prototype.hasOwnProperty.call(data, key)) {
-            //     state.messages.push({
-            //       id: key,
-            //       userUid: data[key].userUid,
-            //       content: data[key].content,
-            //       msgSentTime: data[key].msgSentTime
-            //     });
-            //     // const element = data[key];
-            //   }
-            // }
           });
         })();
       });

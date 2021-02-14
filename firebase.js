@@ -17,6 +17,7 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 // window.addEventListener('load', () => {
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    console.log(user);
     console.log('form firbase file:  User ' + user.uid + ' is logged in with ' + user);
   } else {
     console.log('from firebase file: User is logged out');
